@@ -20,7 +20,7 @@
                         Orientation="Horizontal">
                 <Label Content="紅茶大杯" FontSize="14" VerticalContentAlignment="Center" Margin="20,0,0,0" Height="26" FontWeight="Bold" Foreground="Red" Width="100"/>
                 <Label Content="60元" FontSize="14" VerticalContentAlignment="Center" Margin="20,0,0,0" Height="26" FontWeight="Bold" Foreground="Blue" Width="100"/>
-                <TextBox FontSize="14" VerticalContentAlignment="Center" Margin="100,0,0,0" Height="26" FontWeight="Bold" Foreground="Blue" Width="100"/>
+                <TextBox FontSize="14" VerticalContentAlignment="Center" Margin="100,0,0,0" Height="26" FontWeight="Bold" Foreground="Blue" Width="100" TextChanged="TextBox_TextChanged"/>
             </StackPanel>
             <StackPanel Height="36" Margin="5,5,5,5" Background="Wheat"
              Orientation="Horizontal">
