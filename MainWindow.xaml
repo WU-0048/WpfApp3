@@ -18,33 +18,10 @@
         <StackPanel Background="#FFD9B2E2" Margin="10,-12,3,218">
             <StackPanel Height="36" Margin="5,5,5,5" Background="Wheat"
                         Orientation="Horizontal">
-                <Label Content="烏瓦紅茶大杯" FontSize="14" VerticalContentAlignment="Center" Margin="20,0,0,0" Height="26" FontWeight="Bold" Foreground="Red" Width="100"/>
-                <Label Content="120元" FontSize="14" VerticalContentAlignment="Center" Margin="20,0,0,0" Height="26" FontWeight="Bold" Foreground="Blue" Width="100"/>
-                <TextBox FontSize="14" VerticalContentAlignment="Center" Margin="100,0,0,0" Height="26" FontWeight="Bold" Foreground="Blue" Width="100" TextChanged="TextBox_TextChanged"/>
-            </StackPanel>
-            <StackPanel Height="36" Margin="5,5,5,5" Background="Wheat"
-             Orientation="Horizontal">
-                <Label Content="烏瓦紅茶小杯" FontSize="14" VerticalContentAlignment="Center" Margin="20,0,0,0" Height="26" FontWeight="Bold" Foreground="Red" Width="100"/>
-                <Label Content="80元" FontSize="14" VerticalContentAlignment="Center" Margin="20,0,0,0" Height="26" FontWeight="Bold" Foreground="Blue" Width="100"/>
-                <TextBox FontSize="14" VerticalContentAlignment="Center" Margin="100,0,0,0" Height="26" FontWeight="Bold" Foreground="Blue" Width="100"/>
-            </StackPanel>
-            <StackPanel Height="36" Margin="5,5,5,5" Background="Wheat"
-             Orientation="Horizontal">
-                <Label Content="綠茶大杯" FontSize="14" VerticalContentAlignment="Center" Margin="20,0,0,0" Height="26" FontWeight="Bold" Foreground="Red" Width="100"/>
-                <Label Content="60元" FontSize="14" VerticalContentAlignment="Center" Margin="20,0,0,0" Height="26" FontWeight="Bold" Foreground="Blue" Width="100"/>
-                <TextBox FontSize="14" VerticalContentAlignment="Center" Margin="100,0,0,0" Height="26" FontWeight="Bold" Foreground="Blue" Width="100"/>
-            </StackPanel>
-            <StackPanel Height="36" Margin="5,5,5,5" Background="Wheat"
-             Orientation="Horizontal">
-                <Label Content="奶茶大杯" FontSize="14" VerticalContentAlignment="Center" Margin="20,0,0,0" Height="26" FontWeight="Bold" Foreground="Red" Width="100"/>
-                <Label Content="80元" FontSize="14" VerticalContentAlignment="Center" Margin="20,0,0,0" Height="26" FontWeight="Bold" Foreground="Blue" Width="100"/>
-                <TextBox FontSize="14" VerticalContentAlignment="Center" Margin="100,0,0,0" Height="26" FontWeight="Bold" Foreground="Blue" Width="100"/>
-            </StackPanel>
-            <StackPanel Height="36" Margin="5,5,5,5" Background="Wheat"
-             Orientation="Horizontal">
-                <Label Content="大禹嶺烏龍茶" FontSize="14" VerticalContentAlignment="Center" Margin="20,0,0,0" Height="26" FontWeight="Bold" Foreground="Red" Width="100"/>
-                <Label Content="180元" FontSize="14" VerticalContentAlignment="Center" Margin="20,0,0,0" Height="26" FontWeight="Bold" Foreground="Blue" Width="100"/>
-                <TextBox FontSize="14" VerticalContentAlignment="Center" Margin="100,0,0,0" Height="26" FontWeight="Bold" Foreground="Blue" Width="100"/>
+                <Label Content="紅茶大杯" FontSize="14" VerticalContentAlignment="Center" Margin="20,0,0,0" Height="26" FontWeight="Bold" Foreground="Red" Width="100"/>
+                <Label FontSize="14" VerticalContentAlignment="Center" Margin="20,0,0,0" Height="26" FontWeight="Bold" Foreground="Blue" Width="100"/>
+                <Slider Width="174" Margin="50,0,0,0"/>
+                <Label FontSize="14" Content="0" Foreground="Blue"/>
             </StackPanel>
 
         </StackPanel>
