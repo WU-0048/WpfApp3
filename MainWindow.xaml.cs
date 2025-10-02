@@ -18,13 +18,19 @@ namespace WpfApp3
     {
         Dictionary<string, int> drinks = new Dictionary<string, int>()
         {
-            
-
-
+            {"紅茶大杯",60 },
+            {"紅茶中杯",45 },
+            {"綠茶大杯", 55},
+            {"綠茶中杯",45 }
         };
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
