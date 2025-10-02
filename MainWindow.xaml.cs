@@ -34,5 +34,11 @@ namespace WpfApp3
         {
 
         }
+
+        private void RadioButton1_Checked(object sender, RoutedEventArgs e)
+        {
+            var rb = sender as RadioButton;
+            
+        }
     }
 }
