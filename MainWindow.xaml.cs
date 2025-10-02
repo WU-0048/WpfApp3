@@ -25,14 +25,24 @@ namespace WpfApp3
             { "烏龍茶大杯",75},
             { "烏龍茶中杯",70}
         };
+        Dictionary<string, int> toppings = new Dictionary<string, int>();
+        string resultMessage = "";
+        string typeMessage = "";
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void OrderButton_Click(object sender, RoutedEventArgs e)
         {
-
+            //Orders.Clear();
+            resultMessage = "";
+            for (int i=0;i<DrinkMenu_StackPanel.Children.Count;i++)
+            {
+                var sp = DrinkMenu_StackPanel.Children[i] as StackPanel;
+                var cb = sp.Children[0] as CheckBox;
+                var s1 = sp.Children[2] as Slider;
+            }
         }
 
         private void RadioButton1_Checked(object sender, RoutedEventArgs e)

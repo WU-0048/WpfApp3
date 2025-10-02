@@ -18,7 +18,7 @@
             <ColumnDefinition Width="86*"/>
             <ColumnDefinition Width="99*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Background="#FFD9B2E2" Margin="4,5,9,200" Grid.Row="1" Grid.ColumnSpan="2"/>
+        <StackPanel x:Name="DrinkMenu_StackPanel" Background="#FFD9B2E2" Margin="4,5,9,200" Grid.Row="1" Grid.ColumnSpan="2"/>
         <StackPanel Background="Wheat"
                         Orientation="Horizontal" Margin="8,20,34,429" Grid.Row="1" Grid.ColumnSpan="2">
             <CheckBox Content="紅茶大杯" FontSize="14" VerticalContentAlignment="Center" Margin="20,0,0,0" Height="26" FontWeight="Bold" Foreground="Red" Width="100"/>
@@ -62,7 +62,7 @@ Orientation="Horizontal" Margin="7,243,27,206" Grid.Row="1" Grid.ColumnSpan="2">
             <Label FontSize="14" Content="{Binding Value, ElementName=slider6}" Foreground="Blue" IsTabStop="True"/>
         </StackPanel>
         <TextBox HorizontalAlignment="Left" Margin="2,296,0,0" TextWrapping="Wrap" Text="訂購清單" VerticalAlignment="Top" Width="841" Height="184" Background="#FFEAE5C2" Grid.ColumnSpan="3" RenderTransformOrigin="0.466,0.154" Grid.Row="1"/>
-        <Button Grid.Column="2" Content="訂購" HorizontalAlignment="Left" Margin="28,101,0,0" VerticalAlignment="Top" Height="85" Width="126" Grid.Row="1" Click="Button_Click"/>
+        <Button x:Name="Orders" Grid.Column="2" Content="訂購" HorizontalAlignment="Left" Margin="28,101,0,0" VerticalAlignment="Top" Height="85" Width="126" Grid.Row="1" Click="OrderButton_Click"/>
         <RadioButton x:Name="RadioButton1" Content="內用" HorizontalAlignment="Left" Margin="50,0,0,0" VerticalAlignment="Center" FontSize="14" IsChecked="True" Checked="RadioButton1_Checked"/>
         <RadioButton x:Name="RadioButton2" Content="外帶" HorizontalAlignment="Left" Margin="150,0,0,0" VerticalAlignment="Center" FontSize="14" Checked="RadioButton1_Checked"/>
     </Grid>
