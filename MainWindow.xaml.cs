@@ -30,7 +30,34 @@ namespace WpfApp3
         {
             InitializeComponent();
             AddDrinkItems(drinks);
+            DisplyDrinkMenu();
         }
+
+        private void DisplyDrinkMenu()
+        {
+            DrinkMenu_StackPanel.Children.Clear();
+
+            foreach(var drink in drinks)
+            {
+                StackPanel sp = new StackPanel
+                {
+                    Orientation = Orientation.Horizontal,
+                    Margin = new Thickness(2),
+                    Height = 30,
+                    VerticalAlignment = VerticalAlignment.Center,
+                    Background = Brushes.AliceBlue
+                };
+                CheckBox cd = new CheckBox
+                {
+                    Content = drink.Key,
+                    FontFamily = new FontFamily("微軟正黑體"),
+                    FontSize = 16,
+                    Margin= new Thickness(10,0,20,0),
+
+                };
+            }
+        }
+
         private void AddDrinkItems(Dictionary<string, int> drinks)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -43,8 +70,8 @@ namespace WpfApp3
 
                 foreach (var line in lines)
                 {
-                    string[] tokens = line.Split(',');
-                }
+                    string[] tokens = line.Split(','); 
+               }
             }
         }
         private void OrderButton_Click(object sender, RoutedEventArgs e)
