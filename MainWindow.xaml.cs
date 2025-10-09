@@ -35,7 +35,7 @@ namespace WpfApp3
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Title = "請選飲品檔案";
-            openFileDialog.Filter= "Test files (*.txt)|*.txt|All files (*.*)|*.*";
+            openFileDialog.Filter= "CSV檔案 (*.csv)|*.csv|所有檔案 (*.*)|*.*";
             if(openFileDialog.ShowDialog()==true)
             {
                 string fileName = openFileDialog.FileName;
