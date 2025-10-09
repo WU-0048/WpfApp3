@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml;
 
 namespace WpfApp3
 {
@@ -74,7 +75,28 @@ namespace WpfApp3
                     VerticalContentAlignment=VerticalAlignment.Center,
                     Foreground=Brushes.DarkCyan
                 };
+                Label lb_price = new Label
+                {
+                    Content = $"{drink.Value} 元",
+                    FontFamily = new FontFamily("微軟正黑體"),
+                    FontSize = 16,
+                    Margin = new Thickness(10, 0, 20, 0),
+                    VerticalContentAlignment = VerticalAlignment.Center,
+                    Foreground = Brushes.DarkCyan
+                };
+                Binding binding = new Binding("Value")
+                {
+                    Source = sl,
+                   Mode=BindingMode.OneWay
+                };
+                lb_amout.SetBinding(Label.ContentProperty, binding);
 
+                sp.Children.Add(cd);
+                sp.Children.Add(lb_price);
+                sp.Children.Add(sl);
+                sp.Children.Add(lb_amout);
+
+                DrinkMenu_StackPanel.Children.Add(sp);
             }
         }
 
@@ -154,7 +176,14 @@ namespace WpfApp3
 
             Result_TextBlock.Text = resultMessage;
             SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Title = "儲存訂購明細";
+            saveFileDialog.Filter= "文字檔案 (*.txt)|*.txt|所有檔案 (*.*)|*.*";
 
+            if(saveFileDialog.ShowDialog()==true)
+            {
+                string fileName = saveFileDialog.FileName;
+                File.WriteAllText(fileName, resultMessage);
+            }
         }
 
         private void RadioButton1_Checked(object sender, RoutedEventArgs e)
