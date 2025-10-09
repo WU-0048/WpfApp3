@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using Microsoft.Win32;
+using System.IO;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -18,12 +20,7 @@ namespace WpfApp3
     {
         Dictionary<string, int> drinks = new Dictionary<string, int>()
         {
-            {"紅茶大杯",60 },
-            {"紅茶中杯",45 },
-            {"綠茶大杯", 55},
-            {"綠茶中杯",45 },
-            { "烏龍茶大杯",75},
-            { "烏龍茶中杯",70}
+
         };
         Dictionary<string, int> toppings = new Dictionary<string, int>();
         Dictionary<string, int> orders = new Dictionary<string, int>();
@@ -32,11 +29,26 @@ namespace WpfApp3
         public MainWindow()
         {
             InitializeComponent();
+            AddDrinkItems(drinks);
         }
-
-        private void OrderButton_Click(object sender, RoutedEventArgs e)
+        private void AddDrinkItems(Dictionary<string, int> drinks)
         {
-            // 修正：每次點擊時先清空 orders，避免重複累加
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "請選飲品檔案";
+            openFileDialog.Filter= "Test files (*.txt)|*.txt|All files (*.*)|*.*";
+            if(openFileDialog.ShowDialog()==true)
+            {
+                string fileName = openFileDialog.FileName;
+                string[] lines = File.ReadAllLines(fileName);
+
+                foreach (var line in lines)
+                {
+                    string[] tokens = line.Split(',');
+                }
+            }
+        }
+        private void OrderButton_Click(object sender, RoutedEventArgs e)
+        { 
             orders.Clear();
             resultMessage = "";
             for (int i = 0; i < DrinkMenu_StackPanel.Children.Count; i++)
