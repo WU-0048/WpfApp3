@@ -44,10 +44,11 @@ namespace WpfApp3
                 {
                     Orientation = Orientation.Horizontal,
                     Margin = new Thickness(2),
-                    Height = 30,
+                    Height = 35,
                     VerticalAlignment = VerticalAlignment.Center,
                     Background = Brushes.AliceBlue
                 };
+
                 CheckBox cd = new CheckBox
                 {
                     Content = drink.Key,
@@ -57,15 +58,17 @@ namespace WpfApp3
                     VerticalAlignment = VerticalAlignment.Center,
                     Foreground= Brushes.DarkCyan
                 };
+
                 Slider sl = new Slider
                 {
                     Width = 150,
                     Minimum=0,
                     Maximum=20,
                     Value=0,
-                    IsSelectionRangeEnabled=true,
-                    VerticalContentAlignment=VerticalAlignment.Center
+                    IsSnapToTickEnabled=true,
+                    VerticalContentAlignment=VerticalAlignment.Center,
                 };
+
                 Label lb_amout = new Label
                 {
                     Content = "0",
@@ -75,6 +78,7 @@ namespace WpfApp3
                     VerticalContentAlignment=VerticalAlignment.Center,
                     Foreground=Brushes.DarkCyan
                 };
+
                 Label lb_price = new Label
                 {
                     Content = $"{drink.Value} 元",
@@ -84,10 +88,11 @@ namespace WpfApp3
                     VerticalContentAlignment = VerticalAlignment.Center,
                     Foreground = Brushes.DarkCyan
                 };
+
                 Binding binding = new Binding("Value")
                 {
                     Source = sl,
-                   Mode=BindingMode.OneWay
+                   Mode=BindingMode.OneWay,
                 };
                 lb_amout.SetBinding(Label.ContentProperty, binding);
 
@@ -112,7 +117,10 @@ namespace WpfApp3
 
                 foreach (var line in lines)
                 {
-                    string[] tokens = line.Split(','); 
+                    string[] tokens = line.Split(',');
+                    string drinkName = tokens[0];
+                    int price = int.Parse(tokens[1]);
+                    drinks.Add(drinkName, price);
                }
             }
         }
@@ -125,6 +133,7 @@ namespace WpfApp3
                 var sp = DrinkMenu_StackPanel.Children[i] as StackPanel;
                 var cb = sp.Children[0] as CheckBox;
                 var s1 = sp.Children[2] as Slider;
+
                 int quantity = (int)s1.Value;
 
                 if (cb.IsChecked == true && quantity > 0)
