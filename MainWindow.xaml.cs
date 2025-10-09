@@ -53,8 +53,28 @@ namespace WpfApp3
                     FontFamily = new FontFamily("微軟正黑體"),
                     FontSize = 16,
                     Margin= new Thickness(10,0,20,0),
-
+                    VerticalAlignment = VerticalAlignment.Center,
+                    Foreground= Brushes.DarkCyan
                 };
+                Slider sl = new Slider
+                {
+                    Width = 150,
+                    Minimum=0,
+                    Maximum=20,
+                    Value=0,
+                    IsSelectionRangeEnabled=true,
+                    VerticalContentAlignment=VerticalAlignment.Center
+                };
+                Label lb_amout = new Label
+                {
+                    Content = "0",
+                    FontFamily = new FontFamily("微軟正黑體"),
+                    FontSize = 16,
+                    Margin = new Thickness(10, 0, 20, 0),
+                    VerticalContentAlignment=VerticalAlignment.Center,
+                    Foreground=Brushes.DarkCyan
+                };
+
             }
         }
 
@@ -133,6 +153,8 @@ namespace WpfApp3
             resultMessage += $"折扣訊息：{discountMessage}，實付金額： {sellPrice}元。";
 
             Result_TextBlock.Text = resultMessage;
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+
         }
 
         private void RadioButton1_Checked(object sender, RoutedEventArgs e)
