@@ -20,7 +20,7 @@
 
             </ToolBar>
             <ToolBar Height="38" Width="500" Background="Bisque">
-
+                <Label Content="填滿色彩" VerticalContentAlignment="Center" FontSize="16" Margin="10,0,0,0"/>
             </ToolBar>
         </ToolBarTray>
         <StatusBar Height="35" Background="LightGray" DockPanel.Dock="Bottom">
