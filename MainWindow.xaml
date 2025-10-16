@@ -15,6 +15,7 @@
             <MenuItem Header="儲存畫布"  VerticalAlignment="Center" FontSize="16"/>
 
         </DockPanel>
+        
 
     </StatusBar>
 

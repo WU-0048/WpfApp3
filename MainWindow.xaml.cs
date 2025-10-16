@@ -14,20 +14,9 @@ using System.Xml;
 
 namespace WpfApp3
 {
+
+}
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
-    {
-        Dictionary<string, int> drinks = new Dictionary<string, int>()
-        {
-
-        };
-        Dictionary<string, int> toppings = new Dictionary<string, int>();
-        Dictionary<string, int> orders = new Dictionary<string, int>();
-        string resultMessage = "";
-        string typeMessage = "";
-        public MainWindow()
-        {
-
-        };
+  
