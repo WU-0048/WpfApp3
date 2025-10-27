@@ -9,7 +9,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="eraser.png.png" />
+    <None Remove="line.png.png" />
+    <None Remove="polyline.png.png" />
+    <None Remove="rectangle.png.png" />
+    <None Remove="trashcan.png.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Extended.Wpf.Toolkit" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="eraser.png.png" />
+    <Resource Include="line.png.png" />
+    <Resource Include="polyline.png.png" />
+    <Resource Include="rectangle.png.png" />
+    <Resource Include="trashcan.png.png" />
   </ItemGroup>
 
 </Project>
