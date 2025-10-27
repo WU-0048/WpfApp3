@@ -216,29 +216,41 @@ namespace WpfApp3
             {
                 case "Line":
                     var line = MyCanvas.Children.OfType<Line>().LastOrDefault();
-                    line.Stroke = strokeBrush;
-                    line.StrokeThickness = strokeThickness;
-                    break;
+                    if (line is not null)
+                    {
+                        line.Stroke = strokeBrush;
+                        line.StrokeThickness = strokeThickness;
+                    }
+                        break;
 
                 case "Rectangle":
                     var rect = MyCanvas.Children.OfType<Rectangle>().LastOrDefault();
-                    rect.Stroke = strokeBrush;
-                    rect.Fill = fillBrush;
-                    rect.StrokeThickness = strokeThickness;
-                    break;
+                    if (rect is not null)
+                    { 
+                        rect.Stroke = strokeBrush;
+                        rect.Fill = fillBrush;
+                        rect.StrokeThickness = strokeThickness;
+                    }
+                        break;
 
                 case "Ellipse":
                     var ellipse = MyCanvas.Children.OfType<Ellipse>().LastOrDefault();
-                    ellipse.Stroke = strokeBrush;
-                    ellipse.Fill = fillBrush;
-                    ellipse.StrokeThickness = strokeThickness;
+                    if (ellipse is not null)
+                    {
+                        ellipse.Stroke = strokeBrush;
+                        ellipse.Fill = fillBrush;
+                        ellipse.StrokeThickness = strokeThickness;
+                    }
                     break;
 
                 case "Polyline":
                     var polyline = MyCanvas.Children.OfType<Polyline>().LastOrDefault();
-                    polyline.Stroke = strokeBrush;
-                    polyline.Fill = fillBrush;
-                    polyline.StrokeThickness = strokeThickness;
+                    if (polyline is not null)
+                    {
+                        polyline.Stroke = strokeBrush;
+                        polyline.Fill = fillBrush;
+                        polyline.StrokeThickness = strokeThickness;
+                    }
                     break;
             }
         }
