@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="ellipse.png.png" />
     <None Remove="eraser.png.png" />
     <None Remove="line.png.png" />
     <None Remove="polyline.png.png" />
@@ -21,6 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="ellipse.png.png" />
     <Resource Include="eraser.png.png" />
     <Resource Include="line.png.png" />
     <Resource Include="polyline.png.png" />

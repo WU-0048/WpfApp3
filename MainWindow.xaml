@@ -6,9 +6,9 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:WpfApp3"
         mc:Ignorable="d"
-        Title="WPF小畫家" Height="450" Width="800">
+        Title="WPF小畫家" Height="450" Width="888">
     <DockPanel>
-        <Menu Height="30" DockPanel.Dock="Top">
+        <Menu Height="30" DockPanel.Dock="Top" Width="869">
             <MenuItem Header="檔案" Height="30">
                 <MenuItem Header="開新檔案" Height="30"/>
                 <MenuItem Header="開啟舊檔" Height="30"/>
@@ -25,7 +25,7 @@
                 <Slider x:Name="strokeThicknessSlider" Width="120" VerticalAlignment="Center" Minimum="1" Value="1" TickFrequency="1" IsSnapToTickEnabled="True" Margin="30,0,0,0" ValueChanged="strokeThicknessSlider_ValueChanged"/>
                 <Label Width="40" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="14" FontWeight="Bold" Content="{Binding Value, ElementName=strokeThicknessSlider}" Margin="10,0,0,0" HorizontalContentAlignment="Center"/>
             </ToolBar>
-            <ToolBar Height="40" Width="300">
+            <ToolBar Height="40" Margin="0,0,-97,0">
                 <RadioButton Width="35" Height="35" Tag="Line" Checked="ShapeButton_Checked">
                     <Image Height="30" Width="30" Source="/line.png.png"/>
                 </RadioButton>
@@ -33,7 +33,7 @@
                     <Image Height="30" Width="30" Source="/rectangle.png.png"/>
                 </RadioButton>
                 <RadioButton Width="35" Height="35" Tag="Ellipse" Checked="ShapeButton_Checked">
-                    <Image Height="30" Width="30" Source="/eraser.png.png"/>
+                    <Image Height="30" Width="30" Source="/ellipse.png.png"/>
                 </RadioButton>
                 <RadioButton Width="35" Height="35" Tag="Polyline" Checked="ShapeButton_Checked">
                     <Image Height="30" Width="30" Source="/polyline.png.png"/>
@@ -60,6 +60,6 @@
                 <Label x:Name="shapeLabel" Width="350" Height="28" FontSize="14"/>
             </StatusBarItem>
         </StatusBar>
-        <Canvas x:Name="MyCanvas" Background="#FFF7F7E6" MouseEnter="MyCanvas_MouseEnter" MouseLeftButtonDown="MyCanvas_MouseLeftButtonDown" MouseMove="MyCanvas_MouseMove" MouseLeftButtonUp="MyCanvas_MouseLeftButtonUp"/>
+        <Canvas x:Name="MyCanvas" Background="#FFF7F7E6" MouseEnter="MyCanvas_MouseEnter" MouseLeftButtonDown="MyCanvas_MouseLeftButtonDown" MouseMove="MyCanvas_MouseMove" MouseLeftButtonUp="MyCanvas_MouseLeftButtonUp" Width="865"/>
     </DockPanel>
 </Window>
