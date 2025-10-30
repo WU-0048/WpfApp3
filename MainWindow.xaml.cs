@@ -210,28 +210,7 @@ namespace WpfApp3
             }
             DisplayStatus();
         }
-        private void OpenCanvas_Click(object sender, MouseButtonEventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog
-            {
-                Title = "開啟畫布內容",
-                Filter = "Canvas物件格式|*.xml|所有檔案(*.*)|*.*",
-                DefaultExt="xml"
-            };
-            if(openFileDialog.ShowDialog()==true)
-            {
-                string filePath = openFileDialog.FileName;
-                string canvasXaml = File.ReadAllText(filePath);
 
-                Canvas tempCanvas=XamlReader.Parse(canvasXaml) as Canvas;
-                var tempCanvasChildren = tempCanvas.Children.Cast<Shape>().ToList();
-                foreach(var child in tempCanvasChildren)
-                {
-                    tempCanvas.Children.Remove(child);
-                    MyCanvas.Children.Add(child);
-                }
-            }
-        }
         private void MyCanvas_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             Brush strokeBrush = new SolidColorBrush(strokeColor);
@@ -285,7 +264,7 @@ namespace WpfApp3
             SaveFileDialog saveFileDialog = new SaveFileDialog
             {
                 Title = "儲存畫布內容",
-                Filter = "PNG圖片(*.png)|*.png|JPG圖片(*.jpg)|*.jpg|Canvas物件格式|*.xml|所有圖片(*.*)|*.*",
+                Filter = "PNG圖片(*.png)|*.png|JPG圖片(*.jpg)|*.jpg|原始Canvas物件格式(*.xml)|*.xml|所有圖片(*.*)|*.*",
                 DefaultExt="png"
             };
             if(saveFileDialog.ShowDialog()==true)
@@ -300,23 +279,50 @@ namespace WpfApp3
                     case ".png":
                         var pngEncoder = new PngBitmapEncoder();
                         pngEncoder.Frames.Add(BitmapFrame.Create(renderBimap));
-                        using (FileStream fs=new FileStream(saveFileDialog.FileName,FileMode.Create))
+                        using (FileStream outStream=new FileStream(saveFileDialog.FileName,FileMode.Create))
                         {
-                            pngEncoder.Save(fs);
+                            pngEncoder.Save(outStream);
                         }
+                        MessageBox.Show("存檔成功");
                         break;
                     case ".jpg":
                         var jpgEncoder = new JpegBitmapEncoder();
                         jpgEncoder.Frames.Add(BitmapFrame.Create(renderBimap));
-                        using (FileStream fs = new FileStream(saveFileDialog.FileName, FileMode.Create))
+                        using (FileStream outStream = new FileStream(saveFileDialog.FileName, FileMode.Create))
                         {
-                            jpgEncoder.Save(fs);
+                            jpgEncoder.Save(outStream);
                         }
+                        MessageBox.Show("存檔成功");
                         break;
                         case ".xml":
-                        string canvasXaml = System.Windows.Markup.XamlWriter.Save(MyCanvas);
+                        string canvasXaml =XamlWriter.Save(MyCanvas);
                         File.WriteAllText(saveFileDialog.FileName, canvasXaml);
                         break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+        private void OpenCanvas_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Title = "開啟畫布內容",
+                Filter = "原始Canvas物件格式(*.xml)|*.xml|所有檔案(*.*)|*.*",
+                DefaultExt = "xml"
+            };
+            if (openFileDialog.ShowDialog() == true)
+            {
+                string filePath = openFileDialog.FileName;
+                string canvasXaml = File.ReadAllText(filePath);
+
+                Canvas tempCanvas = XamlReader.Parse(canvasXaml) as Canvas;
+                var tempCanvasChildren = tempCanvas.Children.Cast<Shape>().ToList();
+                foreach (var child in tempCanvasChildren)
+                {
+                    tempCanvas.Children.Remove(child);
+                    MyCanvas.Children.Add(child);
                 }
             }
         }
