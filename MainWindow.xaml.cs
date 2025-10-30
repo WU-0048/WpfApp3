@@ -1,7 +1,11 @@
-﻿using System.Windows;
+﻿using Microsoft.Win32;
+using System.IO;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Markup;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 namespace WpfApp3
@@ -206,7 +210,28 @@ namespace WpfApp3
             }
             DisplayStatus();
         }
+        private void OpenCanvas_Click(object sender, MouseButtonEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Title = "開啟畫布內容",
+                Filter = "Canvas物件格式|*.xml|所有檔案(*.*)|*.*",
+                DefaultExt="xml"
+            };
+            if(openFileDialog.ShowDialog()==true)
+            {
+                string filePath = openFileDialog.FileName;
+                string canvasXaml = File.ReadAllText(filePath);
 
+                Canvas tempCanvas=XamlReader.Parse(canvasXaml) as Canvas;
+                var tempCanvasChildren = tempCanvas.Children.Cast<Shape>().ToList();
+                foreach(var child in tempCanvasChildren)
+                {
+                    tempCanvas.Children.Remove(child);
+                    MyCanvas.Children.Add(child);
+                }
+            }
+        }
         private void MyCanvas_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             Brush strokeBrush = new SolidColorBrush(strokeColor);
@@ -252,6 +277,47 @@ namespace WpfApp3
                         polyline.StrokeThickness = strokeThickness;
                     }
                     break;
+            }
+            DisplayStatus();
+        }
+        private void SaveCanvas_Click(object sender,RoutedEventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                Title = "儲存畫布內容",
+                Filter = "PNG圖片(*.png)|*.png|JPG圖片(*.jpg)|*.jpg|Canvas物件格式|*.xml|所有圖片(*.*)|*.*",
+                DefaultExt="png"
+            };
+            if(saveFileDialog.ShowDialog()==true)
+            {
+                string extension=System.IO.Path.GetExtension(saveFileDialog.FileName).ToLower();
+                int w = Convert.ToInt32(MyCanvas.ActualWidth);
+                int h = Convert.ToInt32(MyCanvas.ActualHeight);
+                RenderTargetBitmap renderBimap = new RenderTargetBitmap(w,h,96d,96d,PixelFormats.Pbgra32);
+                    renderBimap.Render(MyCanvas);
+                switch (extension)
+                {
+                    case ".png":
+                        var pngEncoder = new PngBitmapEncoder();
+                        pngEncoder.Frames.Add(BitmapFrame.Create(renderBimap));
+                        using (FileStream fs=new FileStream(saveFileDialog.FileName,FileMode.Create))
+                        {
+                            pngEncoder.Save(fs);
+                        }
+                        break;
+                    case ".jpg":
+                        var jpgEncoder = new JpegBitmapEncoder();
+                        jpgEncoder.Frames.Add(BitmapFrame.Create(renderBimap));
+                        using (FileStream fs = new FileStream(saveFileDialog.FileName, FileMode.Create))
+                        {
+                            jpgEncoder.Save(fs);
+                        }
+                        break;
+                        case ".xml":
+                        string canvasXaml = System.Windows.Markup.XamlWriter.Save(MyCanvas);
+                        File.WriteAllText(saveFileDialog.FileName, canvasXaml);
+                        break;
+                }
             }
         }
     }
